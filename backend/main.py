@@ -1,15 +1,22 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+
 from pathlib import Path
 from pydantic import BaseModel, Field
 
 from backend.services.convertor import convert_temperature, convert_length, convert_weight
 
+templates = Jinja2Templates(directory="frontend/templates")
 app = FastAPI(title="Unit Converter API", description="API для конвертации единиц измерения")
 
-app.mount("/templates", StaticFiles(directory="frontend/templates"), name="templates")
+app.mount(
+    "/static",
+    StaticFiles(directory="frontend/static"),
+    name="static"
+)
 
 app.add_middleware(
     CORSMiddleware,
@@ -42,12 +49,12 @@ class ConvertRequest(BaseModel):
     )
 
 
-@app.get("/", response_class=HTMLResponse, summary="Главная страница")
-async def root():
-    """
-    Возвращается HTML-файл главной страницы сайта.
-    """
-    return Path("frontend/templates/index.html").read_text()
+@app.get("/")
+async def index(request: Request):
+    return templates.TemplateResponse(
+        "index.html",
+        {"request": request}
+    )
 
 
 @app.get("/units/{category}", summary="Список единиц")
