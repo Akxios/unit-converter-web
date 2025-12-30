@@ -41,7 +41,7 @@ cd backend
 uv sync
 ```
 
-3️⃣ Запуск FastAPI-приложения
+### 3️⃣ Запуск FastAPI-приложения
 ```bash
 uv run python -m backend
 ```
