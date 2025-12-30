@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Unit Converter</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="converter">
+    <h1>Unit Converter</h1>
+
+    <label for="category">Category:</label>
+    <select id="category">
+      <option value="temperature">Temperature</option>
+      <option value="weight">Weight</option>
+      <option value="length">Length</option>
+    </select>
+
+    <label for="from">From:</label>
+    <select id="from"></select>
+
+    <label for="to">To:</label>
+    <select id="to"></select>
+
+    <label>Value:</label>
+    <input type="number" id="value" placeholder="Value">
+
+    <button id="convertBtn">Convert</button>
+
+    <h2 id="result" class="placeholder">Результат появится здесь</h2>
+  </div>
+
+  <script src="/static/scripts.js"></script>
+</body>
+</html>
