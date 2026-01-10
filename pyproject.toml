@@ -1,9 +1,9 @@
 [project]
 name = "backend"
-version = "1.0.1"
+version = "1.0.2"
 description = "Simple unit converter"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 dependencies = [
     "fastapi[all]>=0.128.0",
 ]
