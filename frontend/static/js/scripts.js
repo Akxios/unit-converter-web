@@ -5,7 +5,7 @@ const valueInput = document.getElementById('value');
 const resultOutput = document.getElementById('result');
 const convertBtn = document.getElementById('convertBtn');
 
-const API_URL = 'http://127.0.0.1:8000';
+const API_URL = window.location.origin;
 
 // Загрузка единиц
 async function loadUnits() {

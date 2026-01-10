@@ -7,7 +7,8 @@ from fastapi.templating import Jinja2Templates
 from pathlib import Path
 from pydantic import BaseModel, Field
 
-from backend.services.convertor import convert_temperature, convert_length, convert_weight
+from backend.app.services.convertor import convert_temperature, convert_length, convert_weight
+
 
 templates = Jinja2Templates(directory="frontend/templates")
 app = FastAPI(title="Unit Converter API", description="API для конвертации единиц измерения")
@@ -18,9 +19,16 @@ app.mount(
     name="static"
 )
 
+origins = [
+    "http://localhost",
+    "http://localhost:8000",
+    "http://127.0.0.1:8000"
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://127.0.0.1:8000", "http://localhost:8000"],
+    allow_origins=origins,
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
