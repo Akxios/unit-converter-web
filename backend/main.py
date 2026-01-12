@@ -1,10 +1,8 @@
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-from pathlib import Path
 from pydantic import BaseModel, Field
 
 from backend.app.services.convertor import convert_temperature, convert_length, convert_weight
