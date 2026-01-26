@@ -35,9 +35,8 @@ cd unit-converter-web
 ```bash
 pip install uv
 ```
-Установка зависимостей backend:
+Установка зависимостей:
 ```bash
-cd backend
 uv sync
 ```
 
